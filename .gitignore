@@ -55,3 +55,5 @@ lambda_function.zip
 
 # CI/CD
 trivy-results.sarif
+
+lambda_function.zip

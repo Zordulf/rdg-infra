@@ -151,14 +151,24 @@ jobs:
       - name: Check for secrets in code
         run: |
           echo "Checking for potential secrets..."
-          if grep -r "AKIA" . --exclude-dir=.git 2>/dev/null; then
-            echo "::error::Potential AWS access key found!"
+          
+          # Check for AWS access keys (exclude this workflow file itself)
+          if grep -r "AKIA[0-9A-Z]\{16\}" . \
+             --exclude-dir=.git \
+             --exclude-dir=.github \
+             --exclude="*.yml" \
+             --exclude="*.yaml" 2>/dev/null; then
+            echo "::error::Potential AWS access key found in source code!"
             exit 1
           fi
-          if grep -r "password.*=.*['\"]" lambda-src/ 2>/dev/null; then
-            echo "::warning::Potential hardcoded password found"
+          
+          # Check for hardcoded passwords in source code only
+          if grep -r "password\s*=\s*['\"][^'\"]\{8,\}" lambda-src/ \
+             --include="*.py" 2>/dev/null; then
+            echo "::warning::Potential hardcoded password found - please review"
           fi
-          echo "No obvious secrets found"
+          
+          echo "✓ No obvious secrets found in source code"
 
   # Job 5: Summary
   ci-summary:

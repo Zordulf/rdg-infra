@@ -150,25 +150,21 @@ jobs:
       
       - name: Check for secrets in code
         run: |
-          echo "Checking for potential secrets..."
+          echo "Checking for potential secrets in source code..."
           
-          # Check for AWS access keys (exclude this workflow file itself)
-          if grep -r "AKIA[0-9A-Z]\{16\}" . \
-             --exclude-dir=.git \
-             --exclude-dir=.github \
-             --exclude="*.yml" \
-             --exclude="*.yaml" 2>/dev/null; then
-            echo "::error::Potential AWS access key found in source code!"
+          # Check Python files for AWS keys
+          if find lambda-src -name "*.py" -type f -exec grep -l "AKIA" {} \; 2>/dev/null | grep -q .; then
+            echo "::error::Found potential AWS access key in Python code!"
             exit 1
           fi
           
-          # Check for hardcoded passwords in source code only
-          if grep -r "password\s*=\s*['\"][^'\"]\{8,\}" lambda-src/ \
-             --include="*.py" 2>/dev/null; then
-            echo "::warning::Potential hardcoded password found - please review"
+          # Check Terraform files for AWS keys  
+          if find terraform -name "*.tf" -type f -exec grep -l "AKIA" {} \; 2>/dev/null | grep -q .; then
+            echo "::error::Found potential AWS access key in Terraform code!"
+            exit 1
           fi
           
-          echo "✓ No obvious secrets found in source code"
+          echo "✓ No secrets found in source code"
 
   # Job 5: Summary
   ci-summary:

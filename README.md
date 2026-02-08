@@ -1,8 +1,12 @@
-﻿# RDG Infrastructure
+﻿
+[![CI](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml/badge.svg)](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml)
+[![CD](https://github.com/Zordulf/rdg-infra/actions/workflows/cd.yml/badge.svg)](https://github.com/Zordulf/rdg-infra/actions/workflows/cd.yml)
 
 [![CI](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml/badge.svg)](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml)
 
-# RDG Infrastructure
+
+[![CI](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml/badge.svg)](https://github.com/Zordulf/rdg-infra/actions/workflows/ci.yml)
+[![CD](https://github.com/Zordulf/rdg-infra/actions/workflows/cd.yml/badge.svg)](https://github.com/Zordulf/rdg-infra/actions/workflows/cd.yml)
 
 AWS Free-Tier DevSecOps Infrastructure with Complete CI/CD Pipeline
 

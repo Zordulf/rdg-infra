@@ -47,3 +47,7 @@ terraform apply
 ## License
 
 MIT
+
+## Status
+
+Project initialized and connected to GitHub! ✅

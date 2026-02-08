@@ -1,0 +1,39 @@
+﻿# Git
+.git
+.gitignore
+.github
+
+# Terraform
+terraform/
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Documentation
+*.md
+docs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI/CD artifacts
+trivy-results.sarif
+
+# Build artifacts
+*.zip

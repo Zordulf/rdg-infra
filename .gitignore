@@ -57,3 +57,14 @@ lambda_function.zip
 trivy-results.sarif
 
 lambda_function.zip
+
+# CI/CD
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+trivy-results.sarif
+*.sarif
+
+# GitHub Actions
+.github/workflows/*.log
